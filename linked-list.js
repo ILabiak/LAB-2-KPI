@@ -50,10 +50,41 @@ class DoubleLinkedList {
         nextEl = null;
       }
       console.log(
-        `El: ${currentNode.data} , previous: ${prevEl}, next: ${nextEl}`
+        `previous: ${prevEl}, el: ${currentNode.data} , next: ${nextEl}`
       );
       currentNode = currentNode.next;
     }
+  }
+
+  insert(pos, el) {
+    if (pos < 0 || pos > this.length) {
+      console.log("Invalid position");
+      return;
+    }
+    if (pos === this.length) {
+      this.append(el);
+      return;
+    }
+    let node = new Node(el);
+    if (pos == 0) {
+      this.head.prev = node;
+      node.next = this.head;
+      this.head = node;
+    } else {
+      let index = 0;
+      let prevNode;
+      let currentNode = this.head;
+      while (index < pos) {
+        prevNode = currentNode;
+        currentNode = currentNode.next;
+        index++;
+      }
+      prevNode.next = node;
+      currentNode.prev = node;
+      node.prev = prevNode;
+      node.next = currentNode;
+    }
+    this.length++;
   }
 }
 
@@ -63,5 +94,5 @@ linkedList.append("b");
 linkedList.append("c");
 linkedList.append("d");
 
+linkedList.insert(0, "k");
 linkedList.showList();
-//console.dir(linkedList.head.next.next)
