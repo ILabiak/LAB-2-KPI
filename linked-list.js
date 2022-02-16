@@ -115,6 +115,24 @@ class DoubleLinkedList {
     this.length--;
     return currentNode.data;
   }
+
+  deleteAll(char) {
+    if (char.length === 1 && char.match(/./)) {
+      let currentNode = this.head;
+      let index = 0;
+      while (index < this.length) {
+        if (currentNode.data === char) {
+          this.delete(index);
+          index--;
+        }
+        currentNode = currentNode.next;
+        index++;
+      }
+    } else {
+      console.log("Invalid character");
+      return;
+    }
+  }
 }
 
 let linkedList = new DoubleLinkedList();
@@ -123,5 +141,6 @@ linkedList.append("b");
 linkedList.append("c");
 linkedList.append("d");
 
-linkedList.delete(2);
+
+linkedList.deleteAll("b");
 linkedList.showList();
