@@ -56,28 +56,28 @@ class DoubleLinkedList {
     }
   }
 
-  insert(pos, el) {
-    if (pos < 0 || pos > this.length) {
-      console.log("Invalid position");
+  insert(index, el) {
+    if (index < 0 || index > this.length) {
+      console.log("Invalid index");
       return;
     }
-    if (pos === this.length) {
+    if (index === this.length) {
       this.append(el);
       return;
     }
     let node = new Node(el);
-    if (pos == 0) {
+    if (index == 0) {
       this.head.prev = node;
       node.next = this.head;
       this.head = node;
     } else {
-      let index = 0;
+      let indexCount = 0;
       let prevNode;
       let currentNode = this.head;
-      while (index < pos) {
+      while (indexCount < index) {
         prevNode = currentNode;
         currentNode = currentNode.next;
-        index++;
+        indexCount++;
       }
       prevNode.next = node;
       currentNode.prev = node;
@@ -85,6 +85,35 @@ class DoubleLinkedList {
       node.next = currentNode;
     }
     this.length++;
+  }
+
+  delete(index) {
+    if (index < 0 || index > this.length) {
+      console.log("Invalid index");
+      return;
+    }
+    let currentNode = this.head;
+
+    if (index === 0) {
+      this.head = currentNode.next;
+      this.head.prev = null;
+    } else {
+      let prevNode = null;
+      let indexCount = 0;
+
+      while (indexCount < index) {
+        prevNode = currentNode;
+        currentNode = currentNode.next;
+        indexCount++;
+      }
+
+      prevNode.next = currentNode.next;
+      if (currentNode.next) {
+        currentNode.next.prev = prevNode;
+      }
+    }
+    this.length--;
+    return currentNode.data;
   }
 }
 
@@ -94,5 +123,5 @@ linkedList.append("b");
 linkedList.append("c");
 linkedList.append("d");
 
-linkedList.insert(0, "k");
+linkedList.delete(2);
 linkedList.showList();
