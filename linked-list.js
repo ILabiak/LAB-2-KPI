@@ -57,7 +57,7 @@ class DoubleLinkedList {
   }
 
   insert(index, el) {
-    if (index < 0 || index > this.length) {
+    if (index < 0 || index > this.length || typeof index !== 'number') {
       console.log("Invalid index");
       return;
     }
@@ -88,7 +88,7 @@ class DoubleLinkedList {
   }
 
   delete(index) {
-    if (index < 0 || index > this.length) {
+    if (index < 0 || index > this.length || typeof index !== 'number') {
       console.log("Invalid index");
       return;
     }
@@ -133,6 +133,20 @@ class DoubleLinkedList {
       return;
     }
   }
+
+  get(index) {
+      if(index < 0 || index >= this.length || typeof index !== 'number'){
+          console.log("Invalid index");
+          return;
+      }
+      let indexCount = 0;
+      let currentNode = this.head
+      while(indexCount != index){
+          currentNode = currentNode.next;
+          indexCount++;
+      }
+      return currentNode.data;
+  }
 }
 
 let linkedList = new DoubleLinkedList();
@@ -142,5 +156,5 @@ linkedList.append("c");
 linkedList.append("d");
 
 
-linkedList.deleteAll("b");
+console.log(linkedList.get(3))
 linkedList.showList();
