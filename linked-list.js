@@ -147,6 +147,19 @@ class DoubleLinkedList {
       }
       return currentNode.data;
   }
+
+  clone() {
+      let newLinkedList = new DoubleLinkedList();
+      let currentNode = this.head;
+      let index = 0;
+      while(index < this.length){
+          newLinkedList.append(currentNode.data);
+          currentNode = currentNode.next;
+          index++
+
+      }
+      return newLinkedList;
+  }
 }
 
 let linkedList = new DoubleLinkedList();
@@ -156,5 +169,7 @@ linkedList.append("c");
 linkedList.append("d");
 
 
-console.log(linkedList.get(3))
+const llist = linkedList.clone()
 linkedList.showList();
+console.log('\n\n\n')
+llist.showList()
