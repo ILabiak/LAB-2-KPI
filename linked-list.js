@@ -192,6 +192,28 @@ class DoubleLinkedList {
       return -1;
     }
   }
+
+  findLast(char) {
+    if (char.length === 1 && char.match(/./)) {
+      let currentNode = this.head;
+      let index = 0;
+      while(currentNode.next != null){
+          currentNode = currentNode.next;
+          index++;
+      }
+      while (index >=0) {
+        if (currentNode.data === char) {
+          return index;
+        }
+        index--;
+        currentNode = currentNode.prev;
+      }
+      return -1;
+    } else {
+      console.log("Invalid character");
+      return -1;
+    }
+  }
 }
 
 let linkedList = new DoubleLinkedList();
@@ -201,5 +223,6 @@ linkedList.append("b");
 linkedList.append("c");
 linkedList.append("d");
 
-console.log(linkedList.findElement("d"));
+
+console.log(linkedList.findLast("d"));
 linkedList.showList();
