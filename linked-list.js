@@ -214,6 +214,11 @@ class DoubleLinkedList {
       return -1;
     }
   }
+
+  clear() {
+      this.head = null;
+      this.length = 0;
+  }
 }
 
 let linkedList = new DoubleLinkedList();
@@ -223,6 +228,4 @@ linkedList.append("b");
 linkedList.append("c");
 linkedList.append("d");
 
-
-console.log(linkedList.findLast("d"));
 linkedList.showList();
