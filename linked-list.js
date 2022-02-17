@@ -197,11 +197,11 @@ class DoubleLinkedList {
     if (char.length === 1 && char.match(/./)) {
       let currentNode = this.head;
       let index = 0;
-      while(currentNode.next != null){
-          currentNode = currentNode.next;
-          index++;
+      while (currentNode.next != null) {
+        currentNode = currentNode.next;
+        index++;
       }
-      while (index >=0) {
+      while (index >= 0) {
         if (currentNode.data === char) {
           return index;
         }
@@ -216,8 +216,23 @@ class DoubleLinkedList {
   }
 
   clear() {
-      this.head = null;
-      this.length = 0;
+    this.head = null;
+    this.length = 0;
+  }
+
+  extend(linkedList) {
+    if (typeof linkedList === "object" && linkedList.head) {
+      let currentNode = linkedList.head;
+      let index = 0;
+      while (index < linkedList.length) {
+        this.append(currentNode.data);
+        currentNode = currentNode.next;
+        index++;
+      }
+    } else {
+      console.log("Invalid list");
+      return;
+    }
   }
 }
 
