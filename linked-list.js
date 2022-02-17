@@ -57,7 +57,7 @@ class DoubleLinkedList {
   }
 
   insert(index, el) {
-    if (index < 0 || index > this.length || typeof index !== 'number') {
+    if (index < 0 || index > this.length || typeof index !== "number") {
       console.log("Invalid index");
       return;
     }
@@ -88,7 +88,7 @@ class DoubleLinkedList {
   }
 
   delete(index) {
-    if (index < 0 || index > this.length || typeof index !== 'number') {
+    if (index < 0 || index > this.length || typeof index !== "number") {
       console.log("Invalid index");
       return;
     }
@@ -135,30 +135,44 @@ class DoubleLinkedList {
   }
 
   get(index) {
-      if(index < 0 || index >= this.length || typeof index !== 'number'){
-          console.log("Invalid index");
-          return;
-      }
-      let indexCount = 0;
-      let currentNode = this.head
-      while(indexCount != index){
-          currentNode = currentNode.next;
-          indexCount++;
-      }
-      return currentNode.data;
+    if (index < 0 || index >= this.length || typeof index !== "number") {
+      console.log("Invalid index");
+      return;
+    }
+    let indexCount = 0;
+    let currentNode = this.head;
+    while (indexCount != index) {
+      currentNode = currentNode.next;
+      indexCount++;
+    }
+    return currentNode.data;
   }
 
   clone() {
-      let newLinkedList = new DoubleLinkedList();
-      let currentNode = this.head;
-      let index = 0;
-      while(index < this.length){
-          newLinkedList.append(currentNode.data);
-          currentNode = currentNode.next;
-          index++
+    let newLinkedList = new DoubleLinkedList();
+    let currentNode = this.head;
+    let index = 0;
+    while (index < this.length) {
+      newLinkedList.append(currentNode.data);
+      currentNode = currentNode.next;
+      index++;
+    }
+    return newLinkedList;
+  }
 
-      }
-      return newLinkedList;
+  reverse() {
+    let currentNode = this.head;
+    let index = 0;
+    let temp = null;
+    while (currentNode != null) {
+      temp = currentNode.prev;
+      currentNode.prev = currentNode.next;
+      currentNode.next = temp;
+      currentNode = currentNode.prev;
+    }
+    if (temp != null) {
+      this.head = temp.prev;
+    }
   }
 }
 
@@ -168,8 +182,5 @@ linkedList.append("b");
 linkedList.append("c");
 linkedList.append("d");
 
-
-const llist = linkedList.clone()
+linkedList.reverse();
 linkedList.showList();
-console.log('\n\n\n')
-llist.showList()
