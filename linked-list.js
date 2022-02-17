@@ -174,13 +174,32 @@ class DoubleLinkedList {
       this.head = temp.prev;
     }
   }
+
+  findElement(char) {
+    if (char.length === 1 && char.match(/./)) {
+      let currentNode = this.head;
+      let index = 0;
+      while (index < this.length) {
+        if (currentNode.data === char) {
+          return index;
+        }
+        index++;
+        currentNode = currentNode.next;
+      }
+      return -1;
+    } else {
+      console.log("Invalid character");
+      return -1;
+    }
+  }
 }
 
 let linkedList = new DoubleLinkedList();
+
 linkedList.append("a");
 linkedList.append("b");
 linkedList.append("c");
 linkedList.append("d");
 
-linkedList.reverse();
+console.log(linkedList.findElement("d"));
 linkedList.showList();
