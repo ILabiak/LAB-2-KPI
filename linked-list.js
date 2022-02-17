@@ -18,6 +18,10 @@ class DoubleLinkedList {
     this.length = 0;
   }
 
+  getLength(){
+      return this.length;
+  }
+
   append(el) {
     let node = new Node(el);
     if (this.length === 0) {
