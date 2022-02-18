@@ -141,3 +141,32 @@ test('Insert method tests', () => {
     expect(list.findFirst('c')).toBe(2)
     expect(list.findFirst('e')).toBe(5)
   });
+
+  test('FindLast method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('c')
+    list.append('d')
+    list.append('e')
+    expect(() => list.findLast()).toThrow(Error)
+    expect(() => list.findLast(1)).toThrow(Error)
+    expect(() => list.findLast('ff')).toThrow(Error)
+    expect(list.findLast('a')).toBe(0)
+    expect(list.findLast('c')).toBe(3)
+    expect(list.findLast('e')).toBe(5)
+  });  
+
+  test('Clear method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('d')
+    list.append('e')
+    expect(list.length).toBe(5)
+    list.clear();
+    expect(list.length).toBe(0)
+    expect(list.head).toBe(null)
+  });  
