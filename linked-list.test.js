@@ -1,3 +1,4 @@
+const { expect } = require('@jest/globals');
 const { link } = require('fs');
 const DoubleLinkedList = require('./linked-list');
 
@@ -56,4 +57,19 @@ test('Insert method tests', () => {
     expect(list.delete(2)).toBe('c')
     expect(list.delete(3)).toBe('e')
     expect(list.delete(0)).toBe('a')
+  });
+
+  test('DeleteAll method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('c')
+    list.append('d')
+    list.append('e')
+    expect(() => list.deleteAll()).toThrow(Error)
+    expect(() => list.deleteAll(1)).toThrow(Error)
+    expect(() => list.deleteAll('fsfd')).toThrow(Error)
+    expect(list.deleteAll('c')).toBe(undefined)
+    expect(list.deleteAll('f')).toBe(undefined)
   });
