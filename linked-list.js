@@ -62,8 +62,7 @@ class DoubleLinkedList {
 
   insert(index, el) {
     if (index < 0 || index > this.length || typeof index !== "number") {
-      console.log("Invalid index");
-      return;
+      throw new Error("Invalid index");
     }
     if (index === this.length) {
       this.append(el);
@@ -93,8 +92,7 @@ class DoubleLinkedList {
 
   delete(index) {
     if (index < 0 || index > this.length || typeof index !== "number") {
-      console.log("Invalid index");
-      return;
+      throw new Error("Invalid index");
     }
     let currentNode = this.head;
 
@@ -133,15 +131,13 @@ class DoubleLinkedList {
         index++;
       }
     } else {
-      console.log("Invalid character");
-      return;
+      throw new Error("Invalid character");
     }
   }
 
   get(index) {
     if (index < 0 || index >= this.length || typeof index !== "number") {
-      console.log("Invalid index");
-      return;
+      throw new Error("Invalid index");
     }
     let indexCount = 0;
     let currentNode = this.head;
@@ -192,8 +188,7 @@ class DoubleLinkedList {
       }
       return -1;
     } else {
-      console.log("Invalid character");
-      return -1;
+      throw new Error("Invalid character");
     }
   }
 
@@ -214,8 +209,7 @@ class DoubleLinkedList {
       }
       return -1;
     } else {
-      console.log("Invalid character");
-      return -1;
+      throw new Error("Invalid character");
     }
   }
 
@@ -234,17 +228,11 @@ class DoubleLinkedList {
         index++;
       }
     } else {
-      console.log("Invalid list");
-      return;
+      throw new Error("Invalid list");
     }
   }
 }
 
 let linkedList = new DoubleLinkedList();
 
-linkedList.append("a");
-linkedList.append("b");
-linkedList.append("c");
-linkedList.append("d");
-
-linkedList.showList();
+module.exports = DoubleLinkedList;

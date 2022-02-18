@@ -1,0 +1,23 @@
+{
+  "name": "lab-2-kpi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "linked-list.js",
+  "dependencies": {
+    "jest": "^27.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ILabiak/LAB-2-KPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ILabiak/LAB-2-KPI/issues"
+  },
+  "homepage": "https://github.com/ILabiak/LAB-2-KPI#readme"
+}
