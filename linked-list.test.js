@@ -16,18 +16,13 @@ test('getLength method test', () => {
     expect(list.getLength()).toBe(0)
   });
 
-
-test('Append to list wrong arguments', () => {
+test('Append method tests', () => {
     const list = new DoubleLinkedList();
     expect(() => list.append(1)).toThrow(Error)
     expect(() => list.append(123)).toThrow(Error)
     expect(() => list.append('fff')).toThrow(Error)
     expect(() => list.append()).toThrow(Error)
     expect(() => list.append(f)).toThrow(Error)
-  });
-
-  test('Append to list rigth arguments', () => {
-    const list = new DoubleLinkedList();
     expect(list.append('1')).toBe(undefined)
     expect(list.append('.')).toBe(undefined)
     expect(list.append('a')).toBe(undefined)
@@ -35,3 +30,14 @@ test('Append to list wrong arguments', () => {
     expect(list.append('!')).toBe(undefined)
   });
 
+test('Insert method tests', () => {
+    const list = new DoubleLinkedList();
+    expect(() => list.insert(1,'f')).toThrow(Error)
+    expect(list.insert(0,'f')).toBe(undefined)
+    expect(() => list.insert(0,'ff')).toThrow(Error)
+    expect(list.insert(0,'4')).toBe(undefined)
+    expect(list.insert(1,'a')).toBe(undefined)
+    expect(() => list.insert(undefined,'b')).toThrow(Error)
+    expect(() => list.insert(1)).toThrow(Error)
+    expect(() => list.insert()).toThrow(Error)
+  });
