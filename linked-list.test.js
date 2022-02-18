@@ -183,8 +183,8 @@ test('Insert method tests', () => {
     secondList.append('f')
     secondList.append('g')
     list.extend(secondList)
-    expect(list.length).toBe(7)
-    expect(list.head.next.next.next.next.data).toBe('e') // checking if linked list extended
+    expect(list.length).toBe(9)
+    expect(list.head.next.next.next.next.data).toBe('а') // checking if linked list extended
     secondList.delete(0);
     expect(list.head.next.next.next.next.data).toBe('e') // checking if first list doesn't depend on second one
   });
