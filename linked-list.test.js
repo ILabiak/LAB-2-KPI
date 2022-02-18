@@ -1,3 +1,4 @@
+const { link } = require('fs');
 const DoubleLinkedList = require('./linked-list');
 
 test('getLength method test', () => {
@@ -40,4 +41,19 @@ test('Insert method tests', () => {
     expect(() => list.insert(undefined,'b')).toThrow(Error)
     expect(() => list.insert(1)).toThrow(Error)
     expect(() => list.insert()).toThrow(Error)
+  });
+
+  test('Delete method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('d')
+    list.append('e')
+    expect(() => list.delete()).toThrow(Error)
+    expect(() => list.delete(5)).toThrow(Error)
+    expect(() => list.delete(-1)).toThrow(Error)
+    expect(list.delete(2)).toBe('c')
+    expect(list.delete(3)).toBe('e')
+    expect(list.delete(0)).toBe('a')
   });
