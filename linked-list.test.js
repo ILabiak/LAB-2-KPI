@@ -125,3 +125,19 @@ test('Insert method tests', () => {
     expect(list.head.next.next.next.next.data).toBe('a') //checking 5th element
     expect(list.head.next.next.next.next.next).toBe(null) //checking if the tail next pointer is null
   });
+
+  test('FindFirst method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('c')
+    list.append('d')
+    list.append('e')
+    expect(() => list.findFirst()).toThrow(Error)
+    expect(() => list.findFirst(1)).toThrow(Error)
+    expect(() => list.findFirst('ff')).toThrow(Error)
+    expect(list.findFirst('a')).toBe(0)
+    expect(list.findFirst('c')).toBe(2)
+    expect(list.findFirst('e')).toBe(5)
+  });

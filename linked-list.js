@@ -174,7 +174,7 @@ class DoubleLinkedList {
     }
   }
 
-  findElement(char) {
+  findFirst(char) {
     if (char.length === 1 && char.match(/./)) {
       let currentNode = this.head;
       let index = 0;
