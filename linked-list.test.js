@@ -73,3 +73,20 @@ test('Insert method tests', () => {
     expect(list.deleteAll('c')).toBe(undefined)
     expect(list.deleteAll('f')).toBe(undefined)
   });
+
+  test('Get method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('d')
+    list.append('e')
+    expect(() => list.get()).toThrow(Error)
+    expect(() => list.get('2')).toThrow(Error)
+    expect(() => list.get('aa')).toThrow(Error)
+    expect(() => list.get(-1)).toThrow(Error)
+    expect(() => list.get(10)).toThrow(Error)
+    expect(list.get(0)).toBe('a')
+    expect(list.get(2)).toBe('c')
+    expect(list.get(4)).toBe('e')
+  });
