@@ -8,6 +8,5 @@ test('Append to list wrong arguments', () => {
     expect(() => list.append('fff')).toThrow(Error)
     expect(() => list.append()).toThrow(Error)
     expect(() => list.append(f)).toThrow(Error)
-  //  expect(() => list.append('f')).toThrow(Error)
   });
 
