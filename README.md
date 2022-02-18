@@ -37,3 +37,6 @@ list.showList();
 
 
 > [Commit with failed tests](https://github.com/ILabiak/LAB-2-KPI/commit/dbb332e6903372eefe0e95093351a9c6486c8652)
+
+> [Failed tests](https://github.com/ILabiak/LAB-2-KPI/actions/runs/1865622600)
+
