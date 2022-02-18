@@ -90,3 +90,18 @@ test('Insert method tests', () => {
     expect(list.get(2)).toBe('c')
     expect(list.get(4)).toBe('e')
   });
+
+  test('Clone method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('d')
+    list.append('e')
+    const seconList = list.clone();
+    expect(seconList.length).toBe(5)
+    expect(seconList.get(0)).toBe('a')
+    expect(seconList.get(3)).toBe('d')
+    list.delete(3)
+    expect(seconList.get(3)).toBe('d')
+  });
