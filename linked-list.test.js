@@ -99,12 +99,12 @@ test('Insert method tests', () => {
     list.append('c')
     list.append('d')
     list.append('e')
-    const seconList = list.clone();
-    expect(seconList.length).toBe(5)
-    expect(seconList.get(0)).toBe('a')
-    expect(seconList.get(3)).toBe('d')
+    const secondList = list.clone();
+    expect(secondList.length).toBe(5)
+    expect(secondList.get(0)).toBe('a')
+    expect(secondList.get(3)).toBe('d')
     list.delete(3)
-    expect(seconList.get(3)).toBe('d')
+    expect(secondList.get(3)).toBe('d')
   });
 
   test('Reverse method tests', () => {
@@ -169,4 +169,22 @@ test('Insert method tests', () => {
     list.clear();
     expect(list.length).toBe(0)
     expect(list.head).toBe(null)
-  });  
+  });
+
+  test('Extend method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('d')
+    const secondList = new DoubleLinkedList();
+    expect(() => list.extend(secondList)).toThrow(Error)
+    secondList.append('e')
+    secondList.append('f')
+    secondList.append('g')
+    list.extend(secondList)
+    expect(list.length).toBe(7)
+    expect(list.head.next.next.next.next.data).toBe('e') // checking if linked list extended
+    secondList.delete(0);
+    expect(list.head.next.next.next.next.data).toBe('e') // checking if first list doesn't depend on second one
+  });
