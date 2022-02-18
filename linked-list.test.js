@@ -1,6 +1,3 @@
-const { expect } = require('@jest/globals');
-const exp = require('constants');
-const { link } = require('fs');
 const DoubleLinkedList = require('./linked-list');
 
 test('getLength method test', () => {
