@@ -1,4 +1,5 @@
 const { expect } = require('@jest/globals');
+const exp = require('constants');
 const { link } = require('fs');
 const DoubleLinkedList = require('./linked-list');
 
@@ -104,4 +105,23 @@ test('Insert method tests', () => {
     expect(seconList.get(3)).toBe('d')
     list.delete(3)
     expect(seconList.get(3)).toBe('d')
+  });
+
+  test('Reverse method tests', () => {
+    const list = new DoubleLinkedList();
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('d')
+    list.append('e')
+    expect(list.head.data).toBe('a')
+    expect(list.head.prev).toBe(null)
+    list.reverse();
+    expect(list.head.prev).toBe(null) //checking if the head prev pointer is null
+    expect(list.head.data).toBe('e') //checking 1st element
+    expect(list.head.next.data).toBe('d') //checking 2nd element
+    expect(list.head.next.next.data).toBe('c') //checking 3rd element
+    expect(list.head.next.next.next.data).toBe('b') //checking 4th element
+    expect(list.head.next.next.next.next.data).toBe('a') //checking 5th element
+    expect(list.head.next.next.next.next.next).toBe(null) //checking if the tail next pointer is null
   });

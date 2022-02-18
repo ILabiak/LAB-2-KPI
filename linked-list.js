@@ -162,7 +162,6 @@ class DoubleLinkedList {
 
   reverse() {
     let currentNode = this.head;
-    let index = 0;
     let temp = null;
     while (currentNode != null) {
       temp = currentNode.prev;
